@@ -1,12 +1,9 @@
 # DFCAN/DFGAN
+## Inotation: this repository is forked from: [** DL-SR **](https://github.com/qc17-THU/DL-SR).<br>. I'm a freshmen to github and afraid to make some mistakes when I do somthing on this repository. If you want to know original codes, please refer to above one.
 
 **DFCAN/DFGAN software** is the tensorflow/keras implementation for image transformation from low-resolution (LR) image to super-resolved one, including single wide-field (WF) image super-resolution prediction and SIM reconstruction. This repository is developed based on the 2021 Nature Methods paper [**Evaluation and development of deep neural networks for image super-resolution in optical microscopy**](https://doi.org/10.1038/s41592-020-01048-5).<br>
 
-Author: Chang Qiao<sup>1,#</sup>, Di Li<sup>2,#</sup>, Yuting Guo<sup>2,#</sup>, Chong Liu<sup>2,3,#</sup>, Tao Jiang<sup>2,3</sup>, Qionghai Dai<sup>1,+</sup>, Dong Li<sup>2,3,4,+</sup><br>
-<sup>1</sup>Department of Automation, Tsinghua University, Beijing, China.<br>
-<sup>2</sup>National Laboratory of Biomacromolecules, CAS Center for Excellence in Biomacromolecules, Institute of Biophysics, Chinese Academy of Sciences, Beijing, China.<br>
-<sup>3</sup>College of Life Sciences, University of Chinese Academy of Sciences, Beijing, China.<br>
-<sup>4</sup>Bioland Laboratory, Guangzhou Regenerative Medicine and Health Guangdong Laboratory, Guangzhou, China.<br>
+Original author: Chang Qiao<sup>1,#</sup>, Di Li<sup>2,#</sup>, 
 <sup>#</sup>Equal contribution.  
 <sup>+</sup>Correspondence to: qhdai@tsinghua.edu.cn and lidong@ibp.ac.cn
 
@@ -36,6 +33,7 @@ Author: Chang Qiao<sup>1,#</sup>, Di Li<sup>2,#</sup>, Yuting Guo<sup>2,#</sup>,
 	- `./src/utils` is the tool package of DFCAN/DFGAN software
 - `./trained_models` place pre-trained DFGAN/DFCAN models here for testing, and newly trained models will be saved here by default
 - `./data_agmt_matlab` includes matlab codes used for data augmentation (matlab version: MATLAB 2017b)
+- `./requirements.txt` the requirements for implementation this project
 
 ## BioSR dataset
 [BioSR](https://figshare.com/articles/dataset/BioSR/13264793) is a biological image dataset for super-resolution microscopy, currently including more than 2200 pairs of low-and-high resolution images covering four biology structures (CCPs, ER, MTs, F-actin), nine signal levels (15-600 average photon count), and two upscaling-factors (linear SIM and non-linear SIM). BioSR is now freely available, aiming to provide a high-quality dataset for the community of single bio-image super-resolution algorithm and advanced SIM reconstruction algorithm developers.
@@ -56,18 +54,7 @@ Author: Chang Qiao<sup>1,#</sup>, Di Li<sup>2,#</sup>, Yuting Guo<sup>2,#</sup>,
 - You can run `tensorboard --logdir [save_weights_dir]/[save_weights_name]/graph` to monitor the training process via tensorboard. If the validation loss isn't likely to decay any more, you can use early stop strategy to end the training
 - Model weights will be saved in `./trained_models/` by default
 
+
+
 ## License
 This repository is released under the MIT License (refer to the LICENSE file for details).
-
-## Citation
-If you find the code or BioSR dataset helpful in your resarch, please cite the following paper:
-```
-@article{qiao2021evaluation,
-  title={Evaluation and development of deep neural networks for image super-resolution in optical microscopy},       
-  author={Chang Qiao, Di li, Yuting Guo, Chong Liu, Tao Jiang, Qionghai Dai and Dong Li},
-  journal={Nature Methods},
-  pages={194-202},
-  year={2021},
-  publisher={Nature Publishing Group}
-}
-```
