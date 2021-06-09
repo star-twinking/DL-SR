@@ -1,3 +1,7 @@
+'''
+这个文件主要是一些2D，3D的傅里叶变换和切趾（傅里叶变换后的频谱中不必要的边边角角切除掉）
+还有定义了2D,3D的带有leakyrelu的卷积层
+'''
 from keras.layers.convolutional import Conv2D, Conv3D
 from keras.layers.advanced_activations import LeakyReLU
 from keras import backend as K
