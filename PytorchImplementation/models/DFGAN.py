@@ -4,6 +4,8 @@ import torch.fft
 from torchsummary import summary
 
 
+# ---------------------- Discriminator part -------------------------
+
 def fftshift2d(img):
     bs, ch, h, w = img.shape
     fs11 = img[:, :, h // 2:, w // 2:]
@@ -43,7 +45,6 @@ class FCAB(nn.Module):
             nn.Conv2d(4, 64, kernel_size=1, stride=1, padding=0),
             nn.Sigmoid()
         )
-
 
     def forward(self, x, gamma=0.8):
         x0 = x
@@ -122,9 +123,9 @@ class convblock(nn.Module):
             nn.Conv2d(output_size, output_size, kernel_size=3, stride=1, padding=1),
             nn.LeakyReLU(inplace=True)
         )
-    def forward(self,x):
-        return self.double_conv_relu(x)
 
+    def forward(self, x):
+        return self.double_conv_relu(x)
 
 
 class Discriminator(nn.Module):
@@ -140,7 +141,7 @@ class Discriminator(nn.Module):
         self.conv3 = convblock(64, 128)
         self.conv4 = convblock(128, 256)
         self.conv5 = convblock(256, 512)
-        self.avgpool = nn.AdaptiveAvgPool2d(1) # global average pool在pytorch里面是这个
+        self.avgpool = nn.AdaptiveAvgPool2d(1)  # global average pool在pytorch里面是这个
         self.linear = nn.Sequential(
             nn.Flatten(),
             nn.Linear(512, 256),
@@ -148,7 +149,8 @@ class Discriminator(nn.Module):
             nn.Linear(256, 1),
             nn.Sigmoid()
         )
-    def forward(self,x):
+
+    def forward(self, x):
         x = self.conv_leak(x)
         x = self.conv1(x)
         x = self.conv2(x)
@@ -178,7 +180,7 @@ class Discriminator(nn.Module):
 # 测试Discriminator模型(Test the Dsicriminator model),
 # when practicing the model, it should be commented out
 if __name__ == '__main__':
-    x = torch.rand(1,6,128,128)
+    x = torch.rand(1, 6, 128, 128)
     model = Discriminator(input_shape=x.size()[1])
     y = model(x)
     print('Output shape:', y.shape)
@@ -187,4 +189,4 @@ if __name__ == '__main__':
     # model.to(device)
     if torch.cuda.is_available():
         model.cuda()
-    summary(model,input_size=(6,128,128))
+    summary(model, input_size=(6, 128, 128))
