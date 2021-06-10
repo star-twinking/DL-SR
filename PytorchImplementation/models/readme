@@ -1,6 +1,8 @@
+# Annotation of those files:
 The DFCAN.py is implementd using Pytorch.
 The result would be:
-Output shape: torch.Size([1, 1, 256, 256])
+---
+>> Output shape: torch.Size([1, 1, 256, 256])
 ----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
